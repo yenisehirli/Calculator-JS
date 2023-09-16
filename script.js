@@ -20,14 +20,33 @@ keys.addEventListener('click', function(e) {
     }
 
     if (element.classList.contains('decimal')) {
-        console.log('decimal', element.value);
+        //console.log('decimal', element.value);
+        inputDecimal();
+        updateDisplay();
         return;
     }
     
     if (element.classList.contains('clear')) {
-        console.log('clear', element.value);
+        //console.log('clear', element.value);
+        clear();
+        updateDisplay();
         return;
     }
 
-    console.log('number',element.value);
-});    
+    //console.log('number',element.value);
+    inputNumber(element.value);
+    updateDisplay();
+});
+
+function inputNumber(num) {
+    displayValue = displayValue === '0' ?  num : displayValue + num;
+}
+
+function inputDecimal() {
+    if (!displayValue.includes('.'))
+    displayValue += '.';
+}
+
+function clear() {
+    displayValue = '0';
+}
