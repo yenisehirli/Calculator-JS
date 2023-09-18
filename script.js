@@ -29,6 +29,9 @@ keys.addEventListener('click', function(e) {
         case '.':
             inputDecimal();
             break;
+        case 'clear-last-digit':
+            clearLastDigit();
+            break;
         case 'clear':
             clear();
             break;
@@ -91,4 +94,18 @@ function inputDecimal() {
 
 function clear() {
     displayValue = '0';
+}
+function clearLastDigit() {
+    const lastCharacter = displayValue.slice(-1);
+
+    // Eğer son karakter bir rakamsa
+    if (!isNaN(lastCharacter)) {
+        // displayValue'dan son karakteri sil
+        displayValue = displayValue.slice(0, -1);
+    }
+
+    // Eğer displayValue sadece bir karakterden oluşuyorsa veya displayValue '-' ise
+    if (displayValue.length === 0 || displayValue === ' ') {
+        displayValue = '0';
+    }
 }
